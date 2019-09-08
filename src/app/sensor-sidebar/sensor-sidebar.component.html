@@ -23,6 +23,6 @@
     <tr mat-header-row *matHeaderRowDef="this.displayedColumns"></tr>
     <div id = "trevgae" >
     <tr  mat-row *matRowDef="let row; columns: this.displayedColumns;" (mouseenter) = "this.enter(row)" (mouseleave)= "this.exit()"></tr>
-  </div>
+    </div>
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
