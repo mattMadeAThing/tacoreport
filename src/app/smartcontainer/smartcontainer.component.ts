@@ -6,6 +6,7 @@ import { DataService } from 'src/app/data.service';
   templateUrl: './smartcontainer.component.html',
   styleUrls: ['./smartcontainer.component.css']
 })
+// If unneeded at deploy-time, remove unused lifecycle implementation.
 export class SmartcontainerComponent implements OnInit, AfterViewInit {
   tacoData: SensorList;
   mapCenter: MapCenter;

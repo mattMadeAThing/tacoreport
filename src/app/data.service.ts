@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
-import { SensorList, MapCenter } from 'src/tacosensors';
+import { SensorList, MapCenter, Sensor } from 'src/tacosensors';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataService {
   // This datasource will be replaced with the tacosource API very soon.
   // While working on the UI/UX prototype stage, will just use hardcoded arrays.
-  // Still working with partner to decide whether a more robust(but time consuming)
+  // Still working with partner to decide whether a more robust
   // observable based data source is optimal
   private truckSensors: SensorList;
   private mapCenter: MapCenter;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.mapCenter = {
       lat: 39.7392,
       lng: -104.9903
@@ -58,5 +61,9 @@ export class DataService {
 
   getMapCenter() {
     return this.mapCenter;
+  }
+
+  devOnlyGetMockLineData<Observable>(selectedSensor: Sensor) {
+    return this.http.get('https://api.weather.gov/gridpoints/TOP/31,80');
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { SensorList, Sensor } from 'src/tacosensors';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 
@@ -12,17 +13,21 @@ export class SensorSidebarComponent implements OnInit {
   displayedColumns: string[];
   @Input() activeSensor: Sensor;
   @Input() dataSource: SensorList;
-      // activeSensor comes from parent and is used to indicate which datapoint on in the row is selected.
+  // activeSensor comes from parent and is used to indicate which datapoint on in the row is selected.
   @Output() rowSelect: EventEmitter<Sensor> = new EventEmitter<Sensor>();
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
   constructor() {
     this.displayedColumns = ['Truck Name', 'Lat', 'Lng'];
-   }
+  }
 
   ngOnInit() {
   }
+
   onUpdateActiveRow(row: Sensor) {
     this.rowSelect.emit(row);
   }
+
   exit() {
     this.rowSelect.emit(null);
   }

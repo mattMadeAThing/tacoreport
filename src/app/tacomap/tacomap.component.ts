@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SensorList, MapCenter, Sensor } from 'src/tacosensors';
 import { NgIf } from '@angular/common';
-import { emit } from 'cluster';
 import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 
 
@@ -14,13 +13,10 @@ export class TacomapComponent implements OnInit {
   @Input() tacoPlots: SensorList;
   @Input() mapCenter: MapCenter;
   @Input() activeMarkerId: Sensor;
-  // @Output() markerChanged: EventEmitter;
-  // This value fires an event to show selection
+  // This value fires an event to indicate the user has picked a marker
   @Output() markerSelect = new EventEmitter<Sensor>();
 
-  constructor() {
-    //this.markerOpacity = .5;
-  }
+  constructor() {}
 
   ngOnInit() {
     console.log(this.mapCenter.lat);
@@ -31,8 +27,8 @@ export class TacomapComponent implements OnInit {
     this.markerSelect.emit(marker);
   }
 
-  // This method is called in the template to make the active maerkers = 1
-  // and the inactive markers = .5;
+  // This method is called in the template to make the active markers opacity = 1
+  // and the inactive markers opacity = .5. It's purpose is to highlight the active sensor
   setOpacity(marker: Sensor) {
     if (marker === this.activeMarkerId) {
       return 1;
