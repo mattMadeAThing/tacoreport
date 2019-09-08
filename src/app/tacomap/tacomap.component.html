@@ -1,0 +1,3 @@
+<agm-map [latitude] = "mapCenter.lat" [longitude]= 'mapCenter.lng'>
+  <agm-marker *ngFor= "let plot of tacoPlots" [latitude] = "plot.lat" [longitude]= "plot.lng" [opacity] = markerOpacity></agm-marker>
+</agm-map>

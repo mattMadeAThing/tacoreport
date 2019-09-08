@@ -1,0 +1,28 @@
+<p>sensor-sidebar works!</p>
+<table mat-table [dataSource] = "this.dataSource" matSort>
+  <!---
+    The Angular sorting and pagination directives will not work if the matColumnDef attribute does not EXACTLY
+    match the name of the data property. For example, changing id to iD would cause sorting to fail.
+  -->
+
+
+    <ng-container matColumnDef="Truck Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>TruckName</th>
+      <td mat-cell *matCellDef="let sensor">{{sensor.id}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Lat">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Lat</th>
+      <td mat-cell *matCellDef="let sensor">{{sensor.lng}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Lng">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Lng</th>
+      <td mat-cell *matCellDef="let sensor">{{sensor.lng}}</td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="this.displayedColumns"></tr>
+    <div id = "trevgae" >
+    <tr  mat-row *matRowDef="let row; columns: this.displayedColumns;" (mouseenter) = "this.enter(row)" (mouseleave)= "this.exit()"></tr>
+  </div>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>

@@ -1,0 +1,10 @@
+<p>smartcontainer works!</p>
+
+<div class="grid-container">
+  <div class="Sidebar">
+    <app-sensor-sidebar [dataSource] = "tacoData"></app-sensor-sidebar>
+  </div>
+  <div class = "Map">
+    <app-tacomap [tacoPlots] = "tacoData" [mapCenter] = "mapCenter"></app-tacomap>
+  </div>
+</div>
