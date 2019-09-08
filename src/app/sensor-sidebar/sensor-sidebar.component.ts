@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { SensorList, Sensor } from 'src/tacosensors';
 
 
@@ -10,21 +10,29 @@ import { SensorList, Sensor } from 'src/tacosensors';
 })
 export class SensorSidebarComponent implements OnInit {
   displayedColumns: string[];
-  sensor: Sensor;
+  @Input() activeSensor: Sensor;
   @Input() dataSource: SensorList;
+  @ViewChild(MatPaginator)
       // activeRow is used to indicate which datapoint on in the row is selected.
-  @Output() rowSelect = new EventEmitter<Sensor>();
+  @Output() rowSelect: EventEmitter<Sensor> = new EventEmitter<Sensor>();
   constructor() {
     this.displayedColumns = ['Truck Name', 'Lat', 'Lng'];
    }
 
   ngOnInit() {
   }
-  enter(row: Sensor) {
-    console.log('rowentry' + row.id);
+  onUpdateActiveRow(row: Sensor) {
     this.rowSelect.emit(row);
   }
   exit() {
     this.rowSelect.emit(null);
+  }
+
+  setActiveRowStyling(row: Sensor) {
+    if (row === this.activeSensor) {
+      return('lightgrey');
+    } else {
+      return('white');
+    }
   }
 }

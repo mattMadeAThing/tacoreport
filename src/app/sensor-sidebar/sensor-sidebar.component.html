@@ -12,7 +12,7 @@
     </ng-container>
     <ng-container matColumnDef="Lat">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Lat</th>
-      <td mat-cell *matCellDef="let sensor">{{sensor.lng}}</td>
+      <td mat-cell *matCellDef="let sensor">{{sensor.lat}}</td>
     </ng-container>
     <ng-container matColumnDef="Lng">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Lng</th>
@@ -21,8 +21,12 @@
 
 
     <tr mat-header-row *matHeaderRowDef="this.displayedColumns"></tr>
-    <div id = "trevgae" >
-    <tr  mat-row *matRowDef="let row; columns: this.displayedColumns;" (mouseenter) = "this.enter(row)" (mouseleave)= "this.exit()"></tr>
-    </div>
+    <tr  mat-row *matRowDef="let row; columns: this.displayedColumns;"
+    (mouseenter) = "this.onUpdateActiveRow(row)"
+    (mouseleave)= "this.onUpdateActiveRow(null)"
+    [ngStyle]="{'background-color':this.setActiveRowStyling(row)}"></tr>
   </table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+  <mat-paginator
+  ()
+
+  [pageSizeOptions]="[1, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
