@@ -47,4 +47,4 @@ testem.log
 Thumbs.db
 
 # App module contains api connection key
-/src/app.module.ts
+app.module.ts
