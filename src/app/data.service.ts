@@ -32,7 +32,22 @@ export class DataService {
       {
         lat: 39.727800,
         lng: -105.025520,
-        id: 'La Loteria Taco Truck',
+        id: 'Taco Block Catering',
+      },
+      {
+        lat: 39.749920,
+        lng: -104.999540,
+        id: 'D\'Corazon Mexican Restaurant',
+      },
+      {
+        lat: 39.750300,
+        lng: -105.000090,
+        id: 'Rio Grande Mexican Restaurant',
+      },
+      {
+        lat: 39.744950,
+        lng: -104.987840,
+        id: 'La Loma',
       }
     ];
     }

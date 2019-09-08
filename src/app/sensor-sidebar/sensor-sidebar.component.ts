@@ -12,8 +12,7 @@ export class SensorSidebarComponent implements OnInit {
   displayedColumns: string[];
   @Input() activeSensor: Sensor;
   @Input() dataSource: SensorList;
-  @ViewChild(MatPaginator)
-      // activeRow is used to indicate which datapoint on in the row is selected.
+      // activeSensor comes from parent and is used to indicate which datapoint on in the row is selected.
   @Output() rowSelect: EventEmitter<Sensor> = new EventEmitter<Sensor>();
   constructor() {
     this.displayedColumns = ['Truck Name', 'Lat', 'Lng'];

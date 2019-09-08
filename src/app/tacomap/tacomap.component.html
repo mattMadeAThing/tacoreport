@@ -1,3 +1,8 @@
+<p>{{this.activeMarkerId}} activeMarkerId</p>
+
 <agm-map [latitude] = "mapCenter.lat" [longitude]= 'mapCenter.lng'>
-  <agm-marker *ngFor= "let plot of tacoPlots" [latitude] = "plot.lat" [longitude]= "plot.lng" [opacity] = markerOpacity></agm-marker>
+  <div *ngFor= "let plot of tacoPlots" >
+    <p>{{plot.lat}}</p>
+    <agm-marker (mouseOver) = "this.onUpdateMarker(plot);"  [opacity] = "this.setOpacity(plot)" [latitude] = "plot.lat" [longitude]= "plot.lng"></agm-marker>
+  </div>
 </agm-map>

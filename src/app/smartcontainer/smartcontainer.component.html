@@ -1,10 +1,15 @@
 <p>smartcontainer works!</p>
-
 <div class="grid-container">
-  <div class="Sidebar">
-    <app-sensor-sidebar [dataSource] = "tacoData"></app-sensor-sidebar>
+  <div class = "Sidebar">
+    <app-sensor-sidebar
+    (rowSelect) = "this.recieveRowMarkerUpdate($event)"
+    [activeSensor]= "activeMarkerOrRow"
+    [dataSource] = "tacoData" ></app-sensor-sidebar>
   </div>
   <div class = "Map">
-    <app-tacomap [tacoPlots] = "tacoData" [mapCenter] = "mapCenter"></app-tacomap>
+    <app-tacomap (markerSelect) = "this.recieveRowMarkerUpdate($event)"
+    [activeMarkerId] ="activeMarkerOrRow"
+    [tacoPlots] = "tacoData"
+    [mapCenter] = "mapCenter"></app-tacomap>
   </div>
 </div>
