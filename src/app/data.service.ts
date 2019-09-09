@@ -63,7 +63,7 @@ export class DataService {
     return this.mapCenter;
   }
 
-  devOnlyGetMockLineData<Observable>(selectedSensor: Sensor) {
+  devOnlyGetMockLineData(selectedSensor: Sensor) {
     return this.http.get('https://api.weather.gov/gridpoints/TOP/31,80');
   }
 }

@@ -1,8 +1,9 @@
-<p>sensor-sidebar works!</p>
 <table mat-table [dataSource] = "this.dataSource" matSort>
   <!---
     The Angular sorting and pagination directives will not work if the matColumnDef attribute does not EXACTLY
     match the name of the data property. For example, changing id to iD would cause sorting to fail.
+
+    This restriction applies only when using baked in MatTableDataSource, not DataSource
   -->
 
 

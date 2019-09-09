@@ -13,7 +13,6 @@ export class SmartcontainerComponent implements OnInit, AfterViewInit {
   activeMarkerOrRow: Sensor;
   @Input() newSelectedMarkerOrRow: Sensor;
   // When the backend is built, will probably have to change data access logic a bit so we can use observables.
- // @ViewChildren('testRef') selectedsensor: Sensor;
   constructor(private dataService: DataService) {
     this.tacoData = dataService.getTacoPlots();
     this.mapCenter = dataService.getMapCenter();

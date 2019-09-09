@@ -10,3 +10,8 @@ export interface MapCenter {
   lat: number;
   lng: number;
 }
+
+// To be replaced with real data from api once complete
+export interface devPlotData {
+
+}
