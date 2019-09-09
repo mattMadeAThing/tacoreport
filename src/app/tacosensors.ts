@@ -13,5 +13,6 @@ export interface MapCenter {
 
 // To be replaced with real data from api once complete
 export interface devPlotData {
-
+  validTime: string;
+  value: number;
 }

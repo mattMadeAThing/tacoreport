@@ -1,4 +1,13 @@
-<p>linechart works!</p>
-<button (click) = "this.getChartData()">GetData</button>
-<button (click) = "this.chartSetup()">setup chaarrrt???</button>
-<svg width = "500" height = "500"></svg>
+<h1 mat-dialogue-title></h1>
+<button (click) = "this.openDialog()">dialogtest</button>
+<div style="display: block;">
+  <canvas baseChart width="400" height="400"
+    [datasets]="lineChartData"
+    [labels]="lineChartLabels"
+    [options]="lineChartOptions"
+    [legend] = "true"
+    [colors]="lineChartColors"
+    [chartType]="lineChartType"
+    [plugins]="lineChartPlugins">
+  </canvas>
+</div>

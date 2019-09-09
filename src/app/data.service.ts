@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { SensorList, MapCenter, Sensor } from 'src/tacosensors';
+import { SensorList, MapCenter, Sensor, devPlotData } from './tacosensors';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -62,8 +63,12 @@ export class DataService {
   getMapCenter() {
     return this.mapCenter;
   }
-
-  devOnlyGetMockLineData(selectedSensor: Sensor) {
-    return this.http.get('https://api.weather.gov/gridpoints/TOP/31,80');
+  // On production parameter selectedSensor will not be optional
+  devOnlyGetMockLineData(selectedSensor?: Sensor){
+    return this.http.get('https://api.weather.gov/gridpoints/TOP/31,80').pipe(
+      map(res => {
+      return res.properties.temperature.values.map(values => {return values.value;}
+      )}
+    ));
   }
 }

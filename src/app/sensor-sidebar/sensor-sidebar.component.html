@@ -23,6 +23,7 @@
 
     <tr mat-header-row *matHeaderRowDef="this.displayedColumns"></tr>
     <tr  mat-row *matRowDef="let row; columns: this.displayedColumns;"
+    (click) = "this.onClickRow(row)"
     (mouseenter) = "this.onUpdateActiveRow(row)"
     (mouseleave)= "this.onUpdateActiveRow(null)"
     [ngStyle]="{'background-color':this.setActiveRowStyling(row)}"></tr>

@@ -7,12 +7,15 @@
 <div class="grid-container">
   <div class = "Sidebar">
     <app-sensor-sidebar
+    (rowClick) =  this.onClickRowMarker($event)
     (rowSelect) = "this.recieveRowMarkerUpdate($event)"
     [activeSensor]= "activeMarkerOrRow"
     [dataSource] = "tacoData" ></app-sensor-sidebar>
   </div>
   <div class = "Map">
-    <app-tacomap (markerSelect) = "this.recieveRowMarkerUpdate($event)"
+    <app-tacomap
+    (markerClick) = "this.onClickRowMarker($event)"
+    (markerSelect) = "this.recieveRowMarkerUpdate($event)"
     [activeMarkerId] ="activeMarkerOrRow"
     [tacoPlots] = "tacoData"
     [mapCenter] = "mapCenter"></app-tacomap>

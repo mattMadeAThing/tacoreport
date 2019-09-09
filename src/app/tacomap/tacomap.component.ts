@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SensorList, MapCenter, Sensor } from 'src/tacosensors';
+import { SensorList, MapCenter, Sensor } from '../tacosensors';
 import { NgIf } from '@angular/common';
 import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 
@@ -15,11 +15,15 @@ export class TacomapComponent implements OnInit {
   @Input() activeMarkerId: Sensor;
   // This value fires an event to indicate the user has picked a marker
   @Output() markerSelect = new EventEmitter<Sensor>();
+  @Output() markerClick  = new EventEmitter<Sensor>()
 
   constructor() {}
 
   ngOnInit() {
-    console.log(this.mapCenter.lat);
+  }
+  onClickMarker(marker: Sensor){
+    this.markerClick.emit(marker);
+    console.log("clickme from map");
   }
 
   onUpdateMarker(marker: Sensor) {
