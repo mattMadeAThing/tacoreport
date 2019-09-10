@@ -6,6 +6,7 @@
 -->
 <div class="grid-container">
   <div class = "Sidebar">
+    <app-datadialogue></app-datadialogue>
     <app-sensor-sidebar
     (rowClick) =  this.onClickRowMarker($event)
     (rowSelect) = "this.recieveRowMarkerUpdate($event)"

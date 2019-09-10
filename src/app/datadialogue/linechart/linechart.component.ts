@@ -1,15 +1,15 @@
 /*  This component will display the graph for the sensor selected via sidebar or
 AGM marker(google map pin).  Good holy hotmess I can't wait to use our api instead of random placeholder stuff
 */
-import { DataService } from '../data.service';
+import { DataService } from '../../data.service';
 
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Inject } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Color, Label } from 'ng2-charts';
 import { map } from 'rxjs/operators';
 import { pipe } from 'rxjs';
-import { Sensor } from '../tacosensors';
+import { Sensor } from '../../tacosensors';
 
 
 @Component({
@@ -34,7 +34,9 @@ export class LinechartComponent implements OnInit {
   public lineChartType = 'line';
   public lineChartPlugins = [];
 
-  constructor(private dataSvc: DataService, public dialog: MatDialog) {
+  constructor(private dataSvc: DataService,
+              public dialog: MatDialogRef<LinechartComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   ngOnInit() {
@@ -44,11 +46,11 @@ export class LinechartComponent implements OnInit {
   });
 
 }
-openDialog(): void{
-  const dialogRef = this.dialog.open(LinechartComponent, {
-    width: '400px',
-  })
-}
+//openDialog(): void{
+ // const dialogRef = this.dialog.open(LinechartComponent, {
+ //   width: '400px',
+ // })
+//}
 
 
 }
