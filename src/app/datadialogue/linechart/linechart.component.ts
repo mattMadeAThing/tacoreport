@@ -19,20 +19,18 @@ import { Sensor } from '../../tacosensors';
 })
 export class LinechartComponent implements OnInit {
   @Input() sensorSpecific: Sensor;
-  public lineChartData: ChartDataSets[] = [
-    { data: [], label: 'Series A' },
-  ];
-  public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  // Begin chart parameters. Data loaded in ngOnInit
+  public lineChartData: ChartDataSets[] = [{ data: [], label: '\"tacos\"' },];
+  public lineChartLabels: Label[] = [ '2:00am', '4:00am', '6:00am', '8:00am', '10:00am', 'Noon',
+                                    '2:00pm', '4:00pm', '6:00pm', '8:00pm', '10:00pm', 'Midnight'];
   public lineChartOptions: (ChartOptions & { annotation: any }) = {responsive: true, annotation:true };
   public lineChartColors: Color[] = [
     {
       borderColor: 'black',
-      backgroundColor: 'rgba(255,0,0,0.3)',
-    },
-  ];
-  public lineChartLegend = false;
-  public lineChartType = 'line';
+      backgroundColor: 'rgba(153,204,255,0.3)',
+    }, ];
   public lineChartPlugins = [];
+  // End chart parameters
 
   constructor(private dataSvc: DataService,
               public dialog: MatDialogRef<LinechartComponent>,
@@ -43,8 +41,12 @@ export class LinechartComponent implements OnInit {
    this.dataSvc.devOnlyGetMockLineData().subscribe(data => {
     console.log(data);
     this.lineChartData[0].data = data;
-  });
+    });
+  }
 
+  onClose(){
+    this.dialog.close();
+  }
 }
 //openDialog(): void{
  // const dialogRef = this.dialog.open(LinechartComponent, {
@@ -53,4 +55,4 @@ export class LinechartComponent implements OnInit {
 //}
 
 
-}
+

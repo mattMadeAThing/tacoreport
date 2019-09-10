@@ -12,9 +12,13 @@ export class DataDialogComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   openDialog(selectedSensor?: Sensor): void {
-    let dialogRef = this.dialog.open(LinechartComponent, {
-      width: '700px'
+    const dialogRef = this.dialog.open(LinechartComponent, {
+      width: '700px',
+      height: '400px',
+      hasBackdrop: true,
+
     });
+
   }
   ngOnInit() {
 

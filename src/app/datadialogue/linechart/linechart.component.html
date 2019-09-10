@@ -1,14 +1,21 @@
-<h1 mat-dialogue-title>ayyyy</h1>
-<mat-dialog-content>
-<div style="display: block;">
+<h1 mat-dialogue-title>Bytes per taco(weatjer api for testing)</h1>
+
+  <button mat-button mat-dialog-actions>DayBack </button>
+  <button mat-button mat-dialog-actions style="margin-right: 90%">DayForward</button>
+
+<div mat-dialog-content>
   <canvas baseChart width="400px" height="400px"
     [datasets]="lineChartData"
     [labels]="lineChartLabels"
     [options]="lineChartOptions"
     [legend] = "true"
     [colors]="lineChartColors"
-    [chartType]="lineChartType"
+    [chartType]="'line'"
     [plugins]="lineChartPlugins">
   </canvas>
+
 </div>
-</mat-dialog-content>
+  <div mat-dialog-actions>
+      <button mat-button (click)= "this.onClose()">Close</button>
+
+</div>

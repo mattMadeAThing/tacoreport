@@ -6,6 +6,7 @@ import { DataService } from 'src/app/data.service';
   templateUrl: './smartcontainer.component.html',
   styleUrls: ['./smartcontainer.component.css']
 })
+
 // If unneeded at deploy-time, remove unused lifecycle implementation.
 export class SmartcontainerComponent implements OnInit, AfterViewInit {
   tacoData: SensorList;
@@ -19,12 +20,10 @@ export class SmartcontainerComponent implements OnInit, AfterViewInit {
    }
 
   ngOnInit() {
-
   }
-
   ngAfterViewInit() {
-
   }
+
   onClickRowMarker($event){
     console.log($event)
   }
@@ -37,9 +36,6 @@ export class SmartcontainerComponent implements OnInit, AfterViewInit {
       //console.log("nullrow");
     }
   }
-
-
-
 }
 
 
