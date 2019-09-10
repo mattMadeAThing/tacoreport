@@ -1,41 +1,48 @@
 import { Component, OnInit, AfterViewInit, Input, ViewChild, ViewChildren } from '@angular/core';
 import { SensorList, MapCenter, Sensor } from 'src/app/tacosensors';
 import { DataService } from 'src/app/data.service';
+import { MatDialog } from '@angular/material/dialog';
+import { LinechartComponent } from '../linechart/linechart.component';
 @Component({
   selector: 'app-smartcontainer',
   templateUrl: './smartcontainer.component.html',
   styleUrls: ['./smartcontainer.component.css']
 })
 
-// If unneeded at deploy-time, remove unused lifecycle implementation.
-export class SmartcontainerComponent implements OnInit, AfterViewInit {
+
+export class SmartcontainerComponent implements OnInit {
+  // TacoData is the list of all co-ordinates for everything
   tacoData: SensorList;
   mapCenter: MapCenter;
   activeMarkerOrRow: Sensor;
-  @Input() clickMarkerOrRow: Sensor;
-  // When the backend is built, will probably have to change data access logic a bit so we can use observables.
-  constructor(private dataService: DataService) {
-    this.tacoData = dataService.getTacoPlots();
-    this.mapCenter = dataService.getMapCenter();
-   }
+  constructor(private dataService: DataService, public dialog: MatDialog) {
+  }
 
   ngOnInit() {
-  }
-  ngAfterViewInit() {
-  }
-
-  onClickRowMarker($event){
-    console.log($event)
+    // Expect to add subscription here when API is deployed
+    this.tacoData = this.dataService.getTacoPlots();
+    this.mapCenter = this.dataService.getMapCenter();
   }
 
+  onClickRowMarker($event) {
+    console.log($event);
+    this.openDialog($event)
+  }
+
+  // Sets the parameter(activeMarkerOrRow) which children receive in the template
   recieveRowMarkerUpdate($event) {
     if ($event != null) {
-    // console.log($event.id + "in container");
     this.activeMarkerOrRow = $event;
-    } else {
-      //console.log("nullrow");
     }
   }
+
+  // Opens the modal Dialog to display data on chart. Keep param, will be used to query service when api is finished.
+  openDialog(selectedSensor?: Sensor): void {
+    this.dialog.open(LinechartComponent, {
+      width: '700px',
+      height: '400px',
+      hasBackdrop: true,
+    });
+  }
+
 }
-
-
