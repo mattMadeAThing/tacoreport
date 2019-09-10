@@ -1,10 +1,10 @@
-<h1 mat-dialogue-title>Bytes per taco(weatjer api for testing)</h1>
-
-  <button mat-button mat-dialog-actions>DayBack </button>
-  <button mat-button mat-dialog-actions style="margin-right: 90%">DayForward</button>
-
+<h1 mat-dialogue-title style = "font-family: Arial, Helvetica, sans-serif; text-align: center">Bytes per taco(public temperature api for testing)</h1>
+<div class = "mat-dialog-actions" style="display: flex; flex-direction: row;">
+  <button mat-button >DayBack </button>
+  <button mat-button >DayForward</button>
+</div>
 <div mat-dialog-content>
-  <canvas baseChart width="400px" height="400px"
+  <canvas baseChart width="700px" height="400px"
     [datasets]="lineChartData"
     [labels]="lineChartLabels"
     [options]="lineChartOptions"

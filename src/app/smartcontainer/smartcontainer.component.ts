@@ -39,8 +39,8 @@ export class SmartcontainerComponent implements OnInit {
   // Opens the modal Dialog to display data on chart. Keep param, will be used to query service when api is finished.
   openDialog(selectedSensor?: Sensor): void {
     this.dialog.open(LinechartComponent, {
-      width: '700px',
-      height: '400px',
+      width: '70%',
+      height: '70%',
       hasBackdrop: true,
     });
   }
